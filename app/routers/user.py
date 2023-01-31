@@ -1,4 +1,4 @@
-from fastapi import APIRouter,Depends
+from fastapi import APIRouter,Depends,status
 from app.schemas import User, ShowUser,UserUpdate
 from app.db.database import get_db
 from sqlalchemy.orm import Session
@@ -10,12 +10,14 @@ router = APIRouter(
     tags = ["Users"]
 )
  
-@router.post('/crear_usuario')
+@router.post('/crear_usuario',status_code=status.HTTP_201_CREATED)
 def crear_usuario(user:User,db:Session = Depends(get_db)):
+    
     User_Repository.crear_usuario(user,db)
     return {"respuesta":"Usuario creado con exito"}
+    
 
-@router.get("/",response_model=List[ShowUser])
+@router.get("/",response_model=List[ShowUser],status_code=200)
 def listar_usuarios(db:Session = Depends(get_db)):
     data = User_Repository.listar_usuarios(db)
     return data;
@@ -28,12 +30,12 @@ def obtener_usuario(user_id:str, db:Session = Depends(get_db)):
     return usuario
 
 
-@router.patch("/{user_id}")
+@router.patch("/{user_id}",status_code=status.HTTP_202_ACCEPTED)
 def actualizar_usuario(user_id:int, updateUser: UserUpdate,db:Session = Depends(get_db) ):
     response = User_Repository.actualizar_usuario(user_id, updateUser,db)
     return response
  
-@router.delete('/borrar/{id_usuario}')
+@router.delete('/borrar/{id_usuario}',status_code=status.HTTP_200_OK)
 def borrar_usuario(id_usuario:str, db:Session = Depends(get_db)):
    response = User_Repository.borrar_usuario(id_usuario, db)
    return response

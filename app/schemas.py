@@ -31,3 +31,8 @@ class UserUpdate(BaseModel):
     direccion: str= None
     telefono:int= None
     correo:str= None 
+    
+class Login(BaseModel):
+    userName:str
+    password:str
+    
