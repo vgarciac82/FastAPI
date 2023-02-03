@@ -33,6 +33,6 @@ class UserUpdate(BaseModel):
     correo:str= None 
     
 class Login(BaseModel):
-    userName:str
+    username:str
     password:str
     
