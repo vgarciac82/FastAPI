@@ -521,6 +521,30 @@
         "documentation": {}
     },
     {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "Depends",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -678,6 +702,30 @@
         "description": "app.oauth",
         "isExtraImport": true,
         "detail": "app.oauth",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
+        "documentation": {}
+    },
+    {
+        "label": "Jinja2Templates",
+        "importPath": "fastapi.templating",
+        "description": "fastapi.templating",
+        "isExtraImport": true,
+        "detail": "fastapi.templating",
         "documentation": {}
     },
     {
@@ -1019,6 +1067,24 @@
         "description": "app.routers.user",
         "peekOfCode": "router = APIRouter(\n    prefix=\"/user\", \n    tags = [\"Users\"]\n)\n@router.post('/crear_usuario',status_code=status.HTTP_201_CREATED)\ndef crear_usuario(user:User,db:Session = Depends(get_db),current_user: User = Depends(get_current_user)):\n    User_Repository.crear_usuario(user,db)\n    return {\"respuesta\":\"Usuario creado con exito\"}\n@router.get('/',response_model=List[ShowUser],status_code=status.HTTP_200_OK)\ndef obtener_usuarios(db:Session = Depends(get_db),current_user: User = Depends(get_current_user)):",
         "detail": "app.routers.user",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routers.web",
+        "description": "app.routers.web",
+        "peekOfCode": "router = APIRouter(\n)\ntemplates = Jinja2Templates(directory=\"templates\")",
+        "detail": "app.routers.web",
+        "documentation": {}
+    },
+    {
+        "label": "templates",
+        "kind": 5,
+        "importPath": "app.routers.web",
+        "description": "app.routers.web",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")",
+        "detail": "app.routers.web",
         "documentation": {}
     },
     {

@@ -11,3 +11,4 @@ pytest
 requests
 httpx
 coverage
+jinja2
