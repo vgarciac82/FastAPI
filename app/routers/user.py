@@ -12,7 +12,7 @@ router = APIRouter(
 )
  
 @router.post('/crear_usuario',status_code=status.HTTP_201_CREATED)
-def crear_usuario(user:User,db:Session = Depends(get_db)):
+def crear_usuario(user:User,db:Session = Depends(get_db),current_user: User = Depends(get_current_user)):
     User_Repository.crear_usuario(user,db)
     return {"respuesta":"Usuario creado con exito"}
     

@@ -105,6 +105,22 @@
         "documentation": {}
     },
     {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "insert",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "context",
         "importPath": "alembic",
         "description": "alembic",
@@ -162,6 +178,22 @@
     },
     {
         "label": "Base",
+        "importPath": "app.db.models",
+        "description": "app.db.models",
+        "isExtraImport": true,
+        "detail": "app.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "app.db.models",
+        "description": "app.db.models",
+        "isExtraImport": true,
+        "detail": "app.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
         "importPath": "app.db.models",
         "description": "app.db.models",
         "isExtraImport": true,
@@ -170,10 +202,10 @@
     },
     {
         "label": "declarative_base",
-        "importPath": "sqlalchemy.ext.declarative",
-        "description": "sqlalchemy.ext.declarative",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
         "isExtraImport": true,
-        "detail": "sqlalchemy.ext.declarative",
+        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
@@ -225,6 +257,14 @@
         "documentation": {}
     },
     {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "Base",
         "importPath": "app.db.database",
         "description": "app.db.database",
@@ -234,6 +274,22 @@
     },
     {
         "label": "get_db",
+        "importPath": "app.db.database",
+        "description": "app.db.database",
+        "isExtraImport": true,
+        "detail": "app.db.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "app.db.database",
+        "description": "app.db.database",
+        "isExtraImport": true,
+        "detail": "app.db.database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
         "importPath": "app.db.database",
         "description": "app.db.database",
         "isExtraImport": true,
@@ -513,6 +569,14 @@
         "documentation": {}
     },
     {
+        "label": "Hash",
+        "importPath": "app.hashing",
+        "description": "app.hashing",
+        "isExtraImport": true,
+        "detail": "app.hashing",
+        "documentation": {}
+    },
+    {
         "label": "create_access_token",
         "importPath": "app.token",
         "description": "app.token",
@@ -674,12 +738,11 @@
         "documentation": {}
     },
     {
-        "label": "site",
-        "kind": 6,
+        "label": "TestClient",
+        "importPath": "fastapi.testclient",
+        "description": "fastapi.testclient",
         "isExtraImport": true,
-        "importPath": "site",
-        "description": "site",
-        "detail": "site",
+        "detail": "fastapi.testclient",
         "documentation": {}
     },
     {
@@ -689,6 +752,23 @@
         "importPath": "sys",
         "description": "sys",
         "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "main",
+        "description": "main",
+        "isExtraImport": true,
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
         "documentation": {}
     },
     {
@@ -892,7 +972,7 @@
         "kind": 2,
         "importPath": "app.routers.user",
         "description": "app.routers.user",
-        "peekOfCode": "def crear_usuario(user:User,db:Session = Depends(get_db)):\n    User_Repository.crear_usuario(user,db)\n    return {\"respuesta\":\"Usuario creado con exito\"}\n@router.get('/',response_model=List[ShowUser],status_code=status.HTTP_200_OK)\ndef obtener_usuarios(db:Session = Depends(get_db),current_user: User = Depends(get_current_user)):\n    data = User_Repository.listar_usuarios(db)\n    return data\n@router.get(\"/{user_id}\", response_model=ShowUser )\ndef obtener_usuario(user_id:str, db:Session = Depends(get_db)):\n    usuario = User_Repository.obtener_usuario(user_id, db)",
+        "peekOfCode": "def crear_usuario(user:User,db:Session = Depends(get_db),current_user: User = Depends(get_current_user)):\n    User_Repository.crear_usuario(user,db)\n    return {\"respuesta\":\"Usuario creado con exito\"}\n@router.get('/',response_model=List[ShowUser],status_code=status.HTTP_200_OK)\ndef obtener_usuarios(db:Session = Depends(get_db),current_user: User = Depends(get_current_user)):\n    data = User_Repository.listar_usuarios(db)\n    return data\n@router.get(\"/{user_id}\", response_model=ShowUser )\ndef obtener_usuario(user_id:str, db:Session = Depends(get_db)):\n    usuario = User_Repository.obtener_usuario(user_id, db)",
         "detail": "app.routers.user",
         "documentation": {}
     },
@@ -937,7 +1017,7 @@
         "kind": 5,
         "importPath": "app.routers.user",
         "description": "app.routers.user",
-        "peekOfCode": "router = APIRouter(\n    prefix=\"/user\", \n    tags = [\"Users\"]\n)\n@router.post('/crear_usuario',status_code=status.HTTP_201_CREATED)\ndef crear_usuario(user:User,db:Session = Depends(get_db)):\n    User_Repository.crear_usuario(user,db)\n    return {\"respuesta\":\"Usuario creado con exito\"}\n@router.get('/',response_model=List[ShowUser],status_code=status.HTTP_200_OK)\ndef obtener_usuarios(db:Session = Depends(get_db),current_user: User = Depends(get_current_user)):",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/user\", \n    tags = [\"Users\"]\n)\n@router.post('/crear_usuario',status_code=status.HTTP_201_CREATED)\ndef crear_usuario(user:User,db:Session = Depends(get_db),current_user: User = Depends(get_current_user)):\n    User_Repository.crear_usuario(user,db)\n    return {\"respuesta\":\"Usuario creado con exito\"}\n@router.get('/',response_model=List[ShowUser],status_code=status.HTTP_200_OK)\ndef obtener_usuarios(db:Session = Depends(get_db),current_user: User = Depends(get_current_user)):",
         "detail": "app.routers.user",
         "documentation": {}
     },
@@ -1254,6 +1334,132 @@
         "description": "migratgion.env",
         "peekOfCode": "target_metadata = Base.metadata\n# target_metadata = None\n# other values from the config, defined by the needs of env.py,\n# can be acquired:\n# my_important_option = config.get_main_option(\"my_important_option\")\n# ... etc.\ndef run_migrations_offline() -> None:\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable",
         "detail": "migratgion.env",
+        "documentation": {}
+    },
+    {
+        "label": "crea_primer_usuario",
+        "kind": 2,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "def crea_primer_usuario():\n    password_hash = Hash.hash_password('perote')\n    Session = sessionmaker(bind=engine)\n    session = Session()\n    usuario = User(\n        nombre=\"cherlo\", \n        username=\"cherlo56\",\n        password=password_hash, \n        apellido=\"garcia\",\n        direccion=\"conocida\", ",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "override_get_db",
+        "kind": 2,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "def override_get_db():\n    db = TestingSessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\napp.dependency_overrides[get_db] = override_get_db\ncliente = TestClient(app)\ndef test_crear_usuario():\n    usuario = {",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_crear_usuario",
+        "kind": 2,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "def test_crear_usuario():\n    usuario = {\n        \"username\": \"cherlux\",\n        \"password\": \"12345678\",\n        \"nombre\": \"Vicente\",\n        \"apellido\": \"Garcia\",\n        \"direccion\": \"Conocida\",\n        \"telefono\": 3335588,\n        \"correo\": \"cherlux@gmail.com\",\n        \"creacion\": \"2023-02-07T06:38:00.785759\"",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_obtener_usuarios",
+        "kind": 2,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "def test_obtener_usuarios():\n    usuarioTest = {\n        \"username\": \"cherlo56\",\n        \"password\": \"perote\"\n    }\n    response_token = cliente.post(\"/login/\",data=usuarioTest)\n    assert response_token.status_code == 200\n    assert response_token.json()[\"token_type\"] == \"bearer\"\n    headers = {\n        \"Authorization\": \"Bearer {}\".format(response_token.json()[\"access_token\"])",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_obtener_usuario",
+        "kind": 2,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "def test_obtener_usuario():\n    response = cliente.get(\"/user/1\")\n    print(response.json())\n    assert response.status_code == 200\n    assert response.json()[\"username\"] == \"cherlo56\"\ndef test_eliminar_usuario():\n    response = cliente.delete(\"/borrar/2\")\n    print(response.json())\n    assert response.status_code == 404\ndef test_actualizar_usuario():",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_eliminar_usuario",
+        "kind": 2,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "def test_eliminar_usuario():\n    response = cliente.delete(\"/borrar/2\")\n    print(response.json())\n    assert response.status_code == 404\ndef test_actualizar_usuario():\n    usuario = {\n        \"username\" : \"cherlo82\",\n    }\n    response = cliente.patch(\"/user/1\", json=usuario)\n    print(\"====================================================== Resultado de la actualizacion ======================================================\")",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_actualizar_usuario",
+        "kind": 2,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "def test_actualizar_usuario():\n    usuario = {\n        \"username\" : \"cherlo82\",\n    }\n    response = cliente.patch(\"/user/1\", json=usuario)\n    print(\"====================================================== Resultado de la actualizacion ======================================================\")\n    print(response)\n    assert response.status_code == 202\ndef test_delete_database():\n    db_path = os.path.join(os.path.dirname(__file__),'test.db')",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_database",
+        "kind": 2,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "def test_delete_database():\n    db_path = os.path.join(os.path.dirname(__file__),'test.db')\n    os.remove(db_path)",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "db_path",
+        "kind": 5,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "db_path = os.path.join(os.path.dirname(__file__),'test.db')\ndb_uri = \"sqlite:///{}\".format(db_path)\nengine = create_engine(db_uri)\nBase.metadata.create_all(bind=engine)\nTestingSessionLocal = sessionmaker(bind=engine,autocommit=False,autoflush=False)\ndef crea_primer_usuario():\n    password_hash = Hash.hash_password('perote')\n    Session = sessionmaker(bind=engine)\n    session = Session()\n    usuario = User(",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "db_uri",
+        "kind": 5,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "db_uri = \"sqlite:///{}\".format(db_path)\nengine = create_engine(db_uri)\nBase.metadata.create_all(bind=engine)\nTestingSessionLocal = sessionmaker(bind=engine,autocommit=False,autoflush=False)\ndef crea_primer_usuario():\n    password_hash = Hash.hash_password('perote')\n    Session = sessionmaker(bind=engine)\n    session = Session()\n    usuario = User(\n        nombre=\"cherlo\", ",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "engine = create_engine(db_uri)\nBase.metadata.create_all(bind=engine)\nTestingSessionLocal = sessionmaker(bind=engine,autocommit=False,autoflush=False)\ndef crea_primer_usuario():\n    password_hash = Hash.hash_password('perote')\n    Session = sessionmaker(bind=engine)\n    session = Session()\n    usuario = User(\n        nombre=\"cherlo\", \n        username=\"cherlo56\",",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "TestingSessionLocal",
+        "kind": 5,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "TestingSessionLocal = sessionmaker(bind=engine,autocommit=False,autoflush=False)\ndef crea_primer_usuario():\n    password_hash = Hash.hash_password('perote')\n    Session = sessionmaker(bind=engine)\n    session = Session()\n    usuario = User(\n        nombre=\"cherlo\", \n        username=\"cherlo56\",\n        password=password_hash, \n        apellido=\"garcia\",",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "app.dependency_overrides[get_db]",
+        "kind": 5,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "app.dependency_overrides[get_db] = override_get_db\ncliente = TestClient(app)\ndef test_crear_usuario():\n    usuario = {\n        \"username\": \"cherlux\",\n        \"password\": \"12345678\",\n        \"nombre\": \"Vicente\",\n        \"apellido\": \"Garcia\",\n        \"direccion\": \"Conocida\",\n        \"telefono\": 3335588,",
+        "detail": "test.test_api",
+        "documentation": {}
+    },
+    {
+        "label": "cliente",
+        "kind": 5,
+        "importPath": "test.test_api",
+        "description": "test.test_api",
+        "peekOfCode": "cliente = TestClient(app)\ndef test_crear_usuario():\n    usuario = {\n        \"username\": \"cherlux\",\n        \"password\": \"12345678\",\n        \"nombre\": \"Vicente\",\n        \"apellido\": \"Garcia\",\n        \"direccion\": \"Conocida\",\n        \"telefono\": 3335588,\n        \"correo\": \"cherlux@gmail.com\",",
+        "detail": "test.test_api",
         "documentation": {}
     },
     {
