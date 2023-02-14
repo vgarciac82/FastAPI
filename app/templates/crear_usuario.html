@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+    <div class = "container">
+        <h1>Formulario para crear usuario</h1>
+        <form action="/register" method = "post">
+            <div class="form-group">
+                <label for="username">Nombre</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de Usuario">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+
+
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+            </div>
+
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
+            </div>
+            <div class="form-group">
+                <label for="direccion">Direccion</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Apellido">
+            </div>
+            
+            <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Apellido">
+            </div>
+            
+
+            <div class="form-group">
+                <label for="correo">Email</label>
+                <input type="email" class="form-control" id="correo" name="correo" placeholder="Email">
+            </div>
+            
+         
+             
+            <button type="submit" class="btn btn-primary">Crear</button>
+        </form>
+    </div>
+
+
+{% endblock   %}
+
+

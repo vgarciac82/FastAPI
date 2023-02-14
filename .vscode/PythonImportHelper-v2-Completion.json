@@ -845,6 +845,14 @@
         "documentation": {}
     },
     {
+        "label": "web",
+        "importPath": "app.routers",
+        "description": "app.routers",
+        "isExtraImport": true,
+        "detail": "app.routers",
+        "documentation": {}
+    },
+    {
         "label": "run_migrations_offline",
         "kind": 2,
         "importPath": "alembic.env",
@@ -1070,11 +1078,29 @@
         "documentation": {}
     },
     {
+        "label": "home",
+        "kind": 2,
+        "importPath": "app.routers.web",
+        "description": "app.routers.web",
+        "peekOfCode": "def home(request: Request):\n    return templates.TemplateResponse(\"home.html\", {\"request\": request})\n@router.get(\"/register\")\ndef registration(request: Request):\n    return templates.TemplateResponse(\"crear_usuario.html\", {\"request\": request})\n@router.post(\"/register\")\nasync def registration(request: Request):\n    form = await request.form()\n    usuario = {\n        \"username\" : form.get(\"username\"),",
+        "detail": "app.routers.web",
+        "documentation": {}
+    },
+    {
+        "label": "registration",
+        "kind": 2,
+        "importPath": "app.routers.web",
+        "description": "app.routers.web",
+        "peekOfCode": "def registration(request: Request):\n    return templates.TemplateResponse(\"crear_usuario.html\", {\"request\": request})\n@router.post(\"/register\")\nasync def registration(request: Request):\n    form = await request.form()\n    usuario = {\n        \"username\" : form.get(\"username\"),\n        \"password\" : form.get(\"password\"),\n        \"nombre\" : form.get(\"nombre\"),\n        \"apellido\" : form.get(\"apellido\"),",
+        "detail": "app.routers.web",
+        "documentation": {}
+    },
+    {
         "label": "router",
         "kind": 5,
         "importPath": "app.routers.web",
         "description": "app.routers.web",
-        "peekOfCode": "router = APIRouter(\n)\ntemplates = Jinja2Templates(directory=\"templates\")",
+        "peekOfCode": "router = APIRouter(\n)\ntemplates = Jinja2Templates(directory=\"app/templates\")\n@router.get(\"/\")\ndef home(request: Request):\n    return templates.TemplateResponse(\"home.html\", {\"request\": request})\n@router.get(\"/register\")\ndef registration(request: Request):\n    return templates.TemplateResponse(\"crear_usuario.html\", {\"request\": request})\n@router.post(\"/register\")",
         "detail": "app.routers.web",
         "documentation": {}
     },
@@ -1083,7 +1109,7 @@
         "kind": 5,
         "importPath": "app.routers.web",
         "description": "app.routers.web",
-        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"app/templates\")\n@router.get(\"/\")\ndef home(request: Request):\n    return templates.TemplateResponse(\"home.html\", {\"request\": request})\n@router.get(\"/register\")\ndef registration(request: Request):\n    return templates.TemplateResponse(\"crear_usuario.html\", {\"request\": request})\n@router.post(\"/register\")\nasync def registration(request: Request):\n    form = await request.form()",
         "detail": "app.routers.web",
         "documentation": {}
     },
@@ -1605,7 +1631,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI()\napp.include_router(user.router)\napp.include_router(auth.router)\n#def create_tables():\n#    Base.metadata.create_all(bind = engine)\n#create_tables()\nif __name__ == \"__main__\":\n    uvicorn.run(\"main:app\", port=8000, reload=True)",
+        "peekOfCode": "app = FastAPI()\napp.include_router(user.router)\napp.include_router(auth.router)\napp.include_router(web.router)\n#def create_tables():\n#    Base.metadata.create_all(bind = engine)\n#create_tables()\nif __name__ == \"__main__\":\n    uvicorn.run(\"main:app\", port=8000, reload=True)",
         "detail": "main",
         "documentation": {}
     }

@@ -8,4 +8,29 @@ router = APIRouter(
 )
  
  
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="app/templates")
+
+@router.get("/")
+def home(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
+@router.get("/register")
+def registration(request: Request):
+    return templates.TemplateResponse("crear_usuario.html", {"request": request})
+
+
+@router.post("/register")
+async def registration(request: Request):
+    form = await request.form()
+    usuario = {
+        "username" : form.get("username"),
+        "password" : form.get("password"),
+        "nombre" : form.get("nombre"),
+        "apellido" : form.get("apellido"),
+        "correo" : form.get("correo"),
+        "telefono" : form.get("telefono"),
+        "direccion" : form.get("direccion"),
+    }
+    print(usuario)
+    return templates.TemplateResponse("crear_usuario.html", {"request": request})
+
